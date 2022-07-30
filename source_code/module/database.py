@@ -4,7 +4,8 @@ class Database:
     def connect(self):
         DB_USER = os.getenv('DB_USER')
         DB_PASSWORD = os.environ.get('DB_PASSWORD')
-        return pymysql.connect(host="phonebook-db", user=DB_USER, password=DB_PASSWORD, database="flask_app", charset='utf8mb4')
+        DB_HOSTNAME = os.environ.get('DB_HOSTNAME')
+        return pymysql.connect(host=DB_HOSTNAME, user=DB_USER, password=DB_PASSWORD, database="flask_app", charset='utf8mb4')
 
     def read(self, id):
         con = Database.connect(self)

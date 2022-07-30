@@ -1,9 +1,10 @@
 from flask import Flask, flash, render_template, redirect, url_for, request, session
 from module.database import Database
+import os
 
 
 app = Flask(__name__)
-app.secret_key = "mys3cr3tk3y"
+app.secret_key = os.getenv('API_SECRET_KEY')
 db = Database()
 
 @app.route('/')

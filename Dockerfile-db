@@ -1,5 +1,7 @@
 FROM mysql:5.5
 
+# This file contains environment variables
+# Only used for development environment
 ENV MYSQL_DATABASE ${MYSQL_DATABASE:-flask_app}
 ENV MYSQL_USER ${MYSQL_USER:-dev}
 ENV MYSQL_PASSWORD ${MYSQL_PASSWORD:-dev}

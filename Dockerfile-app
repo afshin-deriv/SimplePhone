@@ -1,7 +1,11 @@
-FROM python:3.8-alpine
+FROM python:3.11-rc-slim
 
+# This file contains environment variables
+# Only used for development environment
 ENV DB_USER ${DB_USER:-dev}
 ENV DB_PASSWORD ${DB_PASSWORD:-dev}
+ENV DB_HOSTNAME ${DB_HOSTNAME:-phonebook-db}
+ENV API_SECRET_KEY ${API_SECRET_KEY:-mys3cr3tk3y}
 
 WORKDIR /app
 COPY source_code/ /app
