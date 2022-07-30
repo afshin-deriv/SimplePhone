@@ -2,8 +2,6 @@ name: Build docker image and publish it to Docker Hub
 
 on:
   push:
-    branches:
-      - main
     tags:
       - '*'
 
