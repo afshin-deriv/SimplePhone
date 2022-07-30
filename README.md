@@ -1,5 +1,5 @@
 # SimplePhone
-==================
+-------
 A SimplePhone app using Flask
 
 ## Development
