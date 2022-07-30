@@ -32,4 +32,4 @@ jobs:
             $DOCKER_USER/$DOCKER_IMAGE:${{env.RELEASE_VERSION}}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          cache: enabled
+          no-cache: false
