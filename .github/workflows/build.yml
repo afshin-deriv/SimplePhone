@@ -11,8 +11,6 @@ env:
   DOCKER_HUB: ${{secrets.DOCKER_HUB}}
   DOCKER_IMAGE: ${{secrets.DOCKER_IMAGE}}
 
-version: 2
-
 jobs:
   build--push-image-to-docker-hub:
     runs-on: ubuntu-latest
