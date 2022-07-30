@@ -1,0 +1,8 @@
+name: Deploy SimplePhone
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
