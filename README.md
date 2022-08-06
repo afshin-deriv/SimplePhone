@@ -9,7 +9,6 @@ $ cd SimplePhone
 $ cp .env.example .env
 $ docker-compose up -d
 ```
-
 For accessing the web application, open your browser and go to http://localhost:8181
 
 ## Clean up
