@@ -1,11 +1,20 @@
-import pymysql, os
+import pymysql, os, time
 
 class Database:
     def connect(self):
         DB_USER = os.getenv('DB_USER')
         DB_PASSWORD = os.environ.get('DB_PASSWORD')
         DB_HOSTNAME = os.environ.get('DB_HOSTNAME')
-        return pymysql.connect(host=DB_HOSTNAME, user=DB_USER, password=DB_PASSWORD, database="flask_app", charset='utf8mb4')
+        conn = pymysql.connect(host=DB_HOSTNAME, user=DB_USER, password=DB_PASSWORD, database="flask_app", charset='utf8mb4')
+        if conn.open is False:
+            max_try = 15
+            tries = 0
+            while conn.open is False:
+                if tries < max_try:
+                    conn.ping()
+                tries +=1
+                time.sleep(3)
+        return conn
 
     def read(self, id):
         con = Database.connect(self)

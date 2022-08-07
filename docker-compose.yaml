@@ -16,5 +16,5 @@ services:
     depends_on:
       - phonebook-db
     ports:
-      - "8181:8181"
+      - "8181:80"
     restart: always
