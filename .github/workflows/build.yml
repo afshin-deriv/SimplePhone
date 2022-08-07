@@ -2,8 +2,8 @@ name: Build docker image and publish it to Docker Hub
 
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - master
 
 env:
   DOCKER_USER: ${{secrets.DOCKER_USER}}
