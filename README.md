@@ -16,3 +16,4 @@ For accessing the web application, open your browser and go to http://localhost:
 ```
 docker-compose down --rmi all
 ```
+
