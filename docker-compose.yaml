@@ -8,13 +8,13 @@ services:
       dockerfile: Dockerfile-db
     restart: always
 
-  phonebook-app:
-    container_name: phonebook-app
+  simplephone:
+    container_name: simplephone
     build:
       context: .
       dockerfile: Dockerfile-app
     depends_on:
       - phonebook-db
     ports:
-      - "8181:80"
+      - "80:5000"
     restart: always
