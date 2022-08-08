@@ -92,6 +92,10 @@ def deletephone():
     else:
         return redirect(url_for('index'))
 
+@app.route('/static/css')
+def send_css(path):
+    return send_from_directory('static/css', path,mimetype='text/css')
+
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('error.html')
