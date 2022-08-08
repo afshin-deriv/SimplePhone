@@ -9,6 +9,15 @@ class Database:
         while (not conn.open):
             conn = pymysql.connect(host=DB_HOSTNAME, user=DB_USER, password=DB_PASSWORD, database="flask_app", charset='utf8mb4')
             time.sleep(2)
+        cursor = conn.cursor()
+        cursor.execute("CREATE TABLE IF NOT EXISTS phonebook ( \
+              id int(5) NOT NULL AUTO_INCREMENT, \
+              name varchar(255) NOT NULL, \
+              phone varchar(50) NOT NULL, \
+              address varchar(255) NOT NULL, \
+              PRIMARY KEY (id) \
+            ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1")
+
         return conn
 
     def read(self, id):
