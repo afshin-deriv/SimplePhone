@@ -9,8 +9,7 @@ from flask_cachecontrol import (
 from module.database import Database
 import os
 
-app = Flask(__name__,static_url_path='static', 
-            static_folder='static',
+app = Flask(__name__,static_folder='static',
             template_folder='templates')
 app.secret_key = os.getenv('API_SECRET_KEY')
 db = Database()
