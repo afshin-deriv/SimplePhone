@@ -3,7 +3,7 @@ name: Build docker image and publish it to Docker Hub
 on:
   push:
     branches:
-      - master
+      - main
 
 env:
   DOCKER_USER: ${{secrets.DOCKER_USER}}
