@@ -12,7 +12,7 @@ env:
   DOCKER_IMAGE: ${{secrets.DOCKER_IMAGE}}
 
 jobs:
-  build--push-image-to-docker-hub:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
