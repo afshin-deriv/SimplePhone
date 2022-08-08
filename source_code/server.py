@@ -9,8 +9,8 @@ from flask_cachecontrol import (
 from module.database import Database
 import os
 
-app = Flask(__name__,static_folder='static',
-            template_folder='templates')
+app = Flask(__name__)
+app._static_folder = "static"
 app.secret_key = os.getenv('API_SECRET_KEY')
 db = Database()
 cors = CORS(app)
@@ -101,4 +101,4 @@ def page_not_found(error):
     return render_template('error.html')
 
 if __name__ == '__main__':
-    app.run(port=80, host="0.0.0.0")
+    app.run(port=80, host="0.0.0.0", debug=True)
