@@ -2,8 +2,7 @@ from flask import Flask, flash, render_template, redirect, url_for, request, ses
 from module.database import Database
 import os
 
-
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 app.secret_key = os.getenv('API_SECRET_KEY')
 db = Database()
 
