@@ -1,12 +1,25 @@
 from flask import Flask, flash, render_template, redirect, url_for, request, session
+from flask_cors import CORS, cross_origin
+from flask_cachecontrol import (
+    cache,
+    cache_for,
+    dont_cache,
+    Always, 
+    ResponseIsSuccessfulOrRedirect)
 from module.database import Database
 import os
 
-app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__,static_url_path='', 
+            static_folder='static',
+            template_folder='templates')
 app.secret_key = os.getenv('API_SECRET_KEY')
 db = Database()
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
+@cross_origin()
+@cache_for(hours=1)
 def index():
     data = db.read(None)
 

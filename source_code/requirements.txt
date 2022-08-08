@@ -1,2 +1,4 @@
 flask
 pymysql
+flask_cors
+flask_cachecontrol
