@@ -7,7 +7,6 @@ services:
       context: .
       dockerfile: Dockerfile-db
     restart: always
-
   simplephone:
     container_name: simplephone
     build:
