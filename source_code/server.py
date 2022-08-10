@@ -12,7 +12,6 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
 @cross_origin()
-@cache_for(hours=1)
 def index():
     data = db.read(None)
 
