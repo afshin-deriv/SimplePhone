@@ -1,4 +1,4 @@
 flask
 pymysql
 flask_cors
-flask_wtf.csrf
+flask_wtf
