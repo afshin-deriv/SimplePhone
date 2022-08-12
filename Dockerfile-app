@@ -9,7 +9,7 @@ ENV API_SECRET_KEY ${API_SECRET_KEY:-mys3cr3tk3y}
 
 USER nobody
 WORKDIR /app
-COPY --chown=nobody:nobody source_code/ /app
+COPY --chown=nobody:nogroup source_code/ /app
 RUN pip install --user -r requirements.txt
 
 ENTRYPOINT ["python", "server.py"]
