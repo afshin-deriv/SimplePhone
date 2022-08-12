@@ -7,9 +7,8 @@ ENV DB_PASSWORD ${DB_PASSWORD:-dev}
 ENV DB_HOSTNAME ${DB_HOSTNAME:-phonebook-db}
 ENV API_SECRET_KEY ${API_SECRET_KEY:-mys3cr3tk3y}
 
-USER nobody
 WORKDIR /app
-COPY --chown=nobody:nogroup source_code/ /app
-RUN pip install --user -r requirements.txt
+COPY source_code/ /app
+RUN pip install --root-user-action=ignore -r requirements.txt
 
 ENTRYPOINT ["python", "server.py"]
