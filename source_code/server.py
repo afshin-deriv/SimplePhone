@@ -35,16 +35,16 @@ def addphone():
         else:
             flash("A new phone number can not be added")
 
-        return Response(url_for('index'), 301)
+        return redirect(url_for('index'))
     else:
-        return Response(url_for('index'), 301)
+        return redirect(url_for('index'))
 
 @app.route('/update/<int:id>/')
 def update(id):
     data = db.read(id);
 
     if len(data) == 0:
-        return Response(url_for('index'), 301)
+        return redirect(url_for('index'))
     else:
         session['update'] = id
         return Response(render_template('update.html', data = data), 200)
