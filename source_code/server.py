@@ -27,7 +27,7 @@ def index():
 def add():
     return Response(render_template('add.html'), 200)
 
-@app.route('/addphone', methods = ['POST', 'GET'])
+@app.route('/addphone', methods=['POST'])
 def addphone():
     if request.method == 'POST' and request.form['save']:
         if db.insert(request.form):
