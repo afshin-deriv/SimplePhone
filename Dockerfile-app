@@ -7,9 +7,13 @@ ENV DB_PASSWORD ${DB_PASSWORD:-dev}
 ENV DB_HOSTNAME ${DB_HOSTNAME:-phonebook-db}
 ENV API_SECRET_KEY ${API_SECRET_KEY:-mys3cr3tk3y}
 
+RUN pip install --upgrade pip
+RUN adduser -D app
+USER app
 WORKDIR /app
-COPY source_code/ /app
+COPY --chown=app:app requirements.txt requirements.txt
+COPY --chown=app:app source_code/ /app
 
-RUN pip install -r requirements.txt
+RUN pip install --user -r requirements.txt
 
 ENTRYPOINT ["python", "server.py"]

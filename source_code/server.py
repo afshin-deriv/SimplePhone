@@ -44,7 +44,7 @@ def update(id):
     data = db.read(id);
 
     if len(data) == 0:
-        return redirect(url_for('index'))
+        return Response(url_for('index'), 301)
     else:
         session['update'] = id
         return Response(render_template('update.html', data = data), 200)
@@ -87,16 +87,12 @@ def deletephone():
 
         session.pop('delete', None)
 
-        return redirect(url_for('index'))
+        return Response(url_for('index'), 301)
     else:
-        return redirect(url_for('index'))
-
-@app.route('/static/css')
-def send_css(path):
-    return send_from_directory('static/css', path,mimetype='text/css')
+        return Response(url_for('index'), 301)
 
 @app.errorhandler(404)
-def page_not_found(error):
+def page_not_found():
     return Response(render_template('error.html'), 200)
 
 if __name__ == '__main__':
