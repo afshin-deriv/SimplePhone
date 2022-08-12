@@ -9,6 +9,7 @@ app = Flask(__name__)
 app.config['WTF_CSRF_ENABLED'] = True
 csrf = CSRFProtect()
 csrf.init_app(app)
+CORS(app, resources={r"/*": {"origins": "*", "send_wildcard": "False"}})
 app._static_folder = "static"
 app.secret_key = os.getenv('API_SECRET_KEY')
 db = Database()
