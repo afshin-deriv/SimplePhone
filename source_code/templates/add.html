@@ -36,6 +36,7 @@
             </div>
 
             <form class="form-horizontal" method="POST" action="/addphone">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
               <div class="box-body">
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Name</label>

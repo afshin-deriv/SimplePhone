@@ -37,6 +37,7 @@
             </div>
 
             <form class="form-horizontal" method="POST" action="/deletephone">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
             {% for row in data %}
               <div class="box-body">
                 <div class="form-group">
