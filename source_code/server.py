@@ -1,7 +1,6 @@
 import re
 from flask import Flask, flash, render_template, redirect, url_for, request, session, Response
 from flask_wtf.csrf import CSRFProtect
-from flask_cors import CORS, cross_origin
 from module.database import Database
 import os
 
