@@ -87,9 +87,9 @@ def deletephone():
 
         session.pop('delete', None)
 
-        return Response(url_for('index'), 301)
+        return redirect(url_for('index'))
     else:
-        return Response(url_for('index'), 301)
+        return redirect(url_for('index'))
 
 @app.errorhandler(404)
 def page_not_found():
