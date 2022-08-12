@@ -61,16 +61,16 @@ def updatephone():
 
         session.pop('update', None)
 
-        return redirect(url_for('index'))
+        return Response(url_for('index'), 301)
     else:
-        return redirect(url_for('index'))
+        return Response(url_for('index'), 301)
 
 @app.route('/delete/<int:id>/')
 def delete(id):
     data = db.read(id);
 
     if len(data) == 0:
-        return redirect(url_for('index'))
+        return Response(url_for('index'), 200)
     else:
         session['delete'] = id
         return Response(render_template('delete.html', data = data), 200)
