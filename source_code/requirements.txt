@@ -1,4 +1,5 @@
 flask
+waitress
 pymysql
 flask_cors
 flask_wtf
