@@ -34,9 +34,9 @@ def addphone():
         else:
             flash("A new phone number can not be added")
 
-        return redirect(url_for('index'))
+        return Response(url_for('index'), 301)
     else:
-        return redirect(url_for('index'))
+        return Response(url_for('index'), 301)
 
 @app.route('/update/<int:id>/')
 def update(id):
