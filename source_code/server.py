@@ -1,9 +1,11 @@
-from flask import Flask, flash, render_template, redirect, url_for, request, session
+import re
+from flask import Flask, flash, render_template, redirect, url_for, request, session, Response
 from flask_cors import CORS, cross_origin
 from module.database import Database
 import os
 
 app = Flask(__name__)
+app.config['WTF_CSRF_ENABLED'] = True 
 app._static_folder = "static"
 app.secret_key = os.getenv('API_SECRET_KEY')
 db = Database()
@@ -15,11 +17,11 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 def index():
     data = db.read(None)
 
-    return render_template('index.html', data = data)
+    return Response(render_template('index.html', data = data), 200)
 
 @app.route('/add/')
 def add():
-    return render_template('add.html')
+    return Response(render_template('add.html'), 200)
 
 @app.route('/addphone', methods = ['POST', 'GET'])
 def addphone():
@@ -41,7 +43,7 @@ def update(id):
         return redirect(url_for('index'))
     else:
         session['update'] = id
-        return render_template('update.html', data = data)
+        return Response(render_template('update.html', data = data), 200)
 
 @app.route('/updatephone', methods = ['POST'])
 def updatephone():
@@ -67,7 +69,7 @@ def delete(id):
         return redirect(url_for('index'))
     else:
         session['delete'] = id
-        return render_template('delete.html', data = data)
+        return Response(render_template('delete.html', data = data), 200)
 
 @app.route('/deletephone', methods = ['POST'])
 def deletephone():
@@ -91,7 +93,7 @@ def send_css(path):
 
 @app.errorhandler(404)
 def page_not_found(error):
-    return render_template('error.html')
+    return Response(render_template('error.html'), 200)
 
 if __name__ == '__main__':
     app.run(port=5000, host="0.0.0.0")
