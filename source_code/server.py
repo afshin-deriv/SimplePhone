@@ -13,8 +13,8 @@ CORS(app, resources={r"/*": {"origins": "*", "send_wildcard": "False"}})
 app._static_folder = "static"
 app.secret_key = os.getenv('API_SECRET_KEY')
 db = Database()
-cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+# cors = CORS(app)
+# app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/', methods=['GET'])
 @cross_origin()
