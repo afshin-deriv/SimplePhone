@@ -7,7 +7,6 @@ ENV DB_PASSWORD ${DB_PASSWORD:-dev}
 ENV DB_HOSTNAME ${DB_HOSTNAME:-phonebook-db}
 ENV API_SECRET_KEY ${API_SECRET_KEY:-mys3cr3tk3y}
 
-RUN pip install --upgrade pip
 RUN adduser -D app
 USER app
 WORKDIR /app
