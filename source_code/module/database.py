@@ -30,7 +30,8 @@ class Database:
                 cursor.execute(
                     "SELECT * FROM phonebook where id = %s order by name asc", (id,))
             return cursor.fetchall()
-        except:
+        except pymysql.Error as e:
+            print("%d: %s" %(e.args[0], e.args[1]))
             return ()
         finally:
             con.close()
@@ -45,7 +46,8 @@ class Database:
             con.commit()
 
             return True
-        except:
+        except pymysql.Error as e:
+            print("%d: %s" %(e.args[0], e.args[1]))
             con.rollback()
 
             return False
@@ -62,7 +64,8 @@ class Database:
             con.commit()
 
             return True
-        except:
+        except pymysql.Error as e:
+            print("%d: %s" %(e.args[0], e.args[1]))
             con.rollback()
 
             return False
@@ -78,7 +81,8 @@ class Database:
             con.commit()
 
             return True
-        except:
+        except pymysql.Error as e:
+            print("%d: %s" %(e.args[0], e.args[1]))
             con.rollback()
 
             return False
