@@ -16,14 +16,13 @@ db = Database()
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 @cross_origin()
 def index():
     data = db.read(None)
-
     return Response(render_template('index.html', data = data), 200)
 
-@app.route('/add/')
+@app.route('/add/', methods=['GET'])
 def add():
     return Response(render_template('add.html'), 200)
 
@@ -39,7 +38,7 @@ def addphone():
     else:
         return redirect(url_for('index'))
 
-@app.route('/update/<int:id>/')
+@app.route('/update/<int:id>/', methods=['GET'])
 def update(id):
     data = db.read(id);
 
@@ -65,7 +64,7 @@ def updatephone():
     else:
         return redirect(url_for('index'))
 
-@app.route('/delete/<int:id>/')
+@app.route('/delete/<int:id>/', methods=['GET'])
 def delete(id):
     data = db.read(id);
 
@@ -97,5 +96,4 @@ def page_not_found():
 
 if __name__ == '__main__':
     from waitress import serve
-    #app.run(port=5000, host="0.0.0.0")
     serve(app, host="0.0.0.0", port=5000)
