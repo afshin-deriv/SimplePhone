@@ -61,9 +61,9 @@ def updatephone():
 
         session.pop('update', None)
 
-        return Response(url_for('index'), 301)
+        return redirect(url_for('index'))
     else:
-        return Response(url_for('index'), 301)
+        return redirect(url_for('index'))
 
 @app.route('/delete/<int:id>/')
 def delete(id):
