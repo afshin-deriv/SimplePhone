@@ -70,7 +70,7 @@ def delete(id):
     data = db.read(id);
 
     if len(data) == 0:
-        return Response(render_template('index.html', data = data), 200)
+        return Response(render_template('index.html'), 200)
     else:
         session['delete'] = id
         return Response(render_template('delete.html', data = data), 200)
