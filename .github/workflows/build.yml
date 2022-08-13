@@ -26,8 +26,8 @@ jobs:
       - name: Build the Docker image
         run: |
           docker build . --file Dockerfile --tag $DOCKER_USER/$DOCKER_IMAGE:${{ github.sha }}
-          docker build . --file Dockerfile-nginx --tag $DOCKER_USER/nginx-sidecar:${{ github.sha }}
+          #docker build . --file Dockerfile-nginx --tag $DOCKER_USER/nginx-sidecar:${{ github.sha }}
       - name: Docker Push
         run: |
           docker push $DOCKER_USER/$DOCKER_IMAGE:${{ github.sha }}
-          docker push $DOCKER_USER/nginx-sidecar:${{ github.sha }}
+          #docker push $DOCKER_USER/nginx-sidecar:${{ github.sha }}
