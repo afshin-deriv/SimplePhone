@@ -30,19 +30,16 @@ def addphone():
         else:
             flash("A new phone number can not be added")
 
-        #return redirect(url_for('index'))
-        return Response(render_template('index.html'), 200)
+        return redirect(url_for('index'))
     else:
-        #return redirect(url_for('index'))
-        return Response(render_template('index.html'), 200)
+        return redirect(url_for('index'))
 
 @app.route('/update/<int:id>/', methods=['GET'])
 def update(id):
     data = db.read(id);
 
     if len(data) == 0:
-        #return redirect(url_for('index'))
-        return Response(render_template('index.html'), 200)
+        return redirect(url_for('index'))
     else:
         session['update'] = id
         return Response(render_template('update.html', data = data), 200)
@@ -59,11 +56,9 @@ def updatephone():
 
         session.pop('update', None)
 
-        #return redirect(url_for('index'))
-        return Response(render_template('index.html'), 200)
+        return redirect(url_for('index'))
     else:
-        #return redirect(url_for('index'))
-        return Response(render_template('index.html'), 200)
+        return redirect(url_for('index'))
 
 @app.route('/delete/<int:id>/', methods=['GET'])
 def delete(id):
@@ -87,11 +82,9 @@ def deletephone():
 
         session.pop('delete', None)
 
-        #return redirect(url_for('index'))
-        return Response(render_template('index.html'), 200)
+        return redirect(url_for('index'))
     else:
-        #return redirect(url_for('index'))
-        return Response(render_template('index.html'), 200)
+        return redirect(url_for('index'))
 
 @app.errorhandler(404)
 def page_not_found():
