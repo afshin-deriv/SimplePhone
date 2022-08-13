@@ -16,11 +16,11 @@ db = Database()
 @app.route('/', methods=['GET'])
 def index():
     data = db.read(None)
-    return render_template('index.html', data = data)
+    return Response(render_template('index.html', data = data), 200)
 
 @app.route('/add/', methods=['GET'])
 def add():
-    return render_template('add.html')
+    return Response(render_template('add.html'), 200)
 
 @app.route('/addphone', methods=['POST'])
 def addphone():
@@ -30,19 +30,22 @@ def addphone():
         else:
             flash("A new phone number can not be added")
 
-        return redirect(url_for('index'))
+        #return redirect(url_for('index'))
+        return Response(render_template('index.html'), 200)
     else:
-        return redirect(url_for('index'))
+        #return redirect(url_for('index'))
+        return Response(render_template('index.html'), 200)
 
 @app.route('/update/<int:id>/', methods=['GET'])
 def update(id):
     data = db.read(id);
 
     if len(data) == 0:
-        return redirect(url_for('index'))
+        #return redirect(url_for('index'))
+        return Response(render_template('index.html', data = data), 200)
     else:
         session['update'] = id
-        return render_template('update.html', data = data)
+        return Response(render_template('update.html', data = data), 200)
 
 @app.route('/updatephone', methods = ['POST'])
 def updatephone():
@@ -56,19 +59,21 @@ def updatephone():
 
         session.pop('update', None)
 
-        return redirect(url_for('index'))
+        #return redirect(url_for('index'))
+        return Response(render_template('index.html'), 200)
     else:
-        return redirect(url_for('index'))
+        #return redirect(url_for('index'))
+        return Response(render_template('index.html'), 200)
 
 @app.route('/delete/<int:id>/', methods=['GET'])
 def delete(id):
     data = db.read(id);
 
     if len(data) == 0:
-        return redirect(url_for('index'))
+        return Response(render_template('index.html', data = data), 200)
     else:
         session['delete'] = id
-        return render_template('delete.html', data = data)
+        return Response(render_template('delete.html', data = data), 200)
 
 @app.route('/deletephone', methods = ['POST'])
 def deletephone():
@@ -82,9 +87,11 @@ def deletephone():
 
         session.pop('delete', None)
 
-        return redirect(url_for('index'))
+        #return redirect(url_for('index'))
+        return Response(render_template('index.html'), 200)
     else:
-        return redirect(url_for('index'))
+        #return redirect(url_for('index'))
+        return Response(render_template('index.html'), 200)
 
 @app.errorhandler(404)
 def page_not_found():
