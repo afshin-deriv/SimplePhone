@@ -6,7 +6,7 @@ ENV DB_USER ${DB_USER:-dev}
 ENV DB_PASSWORD ${DB_PASSWORD:-dev}
 ENV DB_HOSTNAME ${DB_HOSTNAME:-phonebook-db}
 ENV API_SECRET_KEY ${API_SECRET_KEY:-mys3cr3tk3y}
-
+EXPOSE 80
 WORKDIR /app
 COPY source_code/ /app
 RUN pip install --root-user-action=ignore -r requirements.txt
