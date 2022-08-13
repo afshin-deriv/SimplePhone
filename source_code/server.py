@@ -65,7 +65,7 @@ def delete(id):
     data = db.read(id);
 
     if len(data) == 0:
-        return Response(url_for('index'), 200)
+        return redirect(url_for('index'))
     else:
         session['delete'] = id
         return Response(render_template('delete.html', data = data), 200)
@@ -92,5 +92,4 @@ def page_not_found():
 
 if __name__ == '__main__':
     from waitress import serve
-    #serve(app, host="0.0.0.0", port=5000)
-    app.run(port=5000, host="0.0.0.0")
+    serve(app, host="0.0.0.0", port=5000)
