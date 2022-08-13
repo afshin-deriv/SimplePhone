@@ -16,11 +16,11 @@ db = Database()
 @app.route('/', methods=['GET'])
 def index():
     data = db.read(None)
-    return Response(render_template('index.html', data = data), 200)
+    return render_template('index.html', data = data)
 
 @app.route('/add/', methods=['GET'])
 def add():
-    return Response(render_template('add.html'), 200)
+    return render_template('add.html')
 
 @app.route('/addphone', methods=['POST'])
 def addphone():
@@ -42,7 +42,7 @@ def update(id):
         return redirect(url_for('index'))
     else:
         session['update'] = id
-        return Response(render_template('update.html', data = data), 200)
+        return render_template('update.html', data = data)
 
 @app.route('/updatephone', methods = ['POST'])
 def updatephone():
@@ -68,7 +68,7 @@ def delete(id):
         return redirect(url_for('index'))
     else:
         session['delete'] = id
-        return Response(render_template('delete.html', data = data), 200)
+        return render_template('delete.html', data = data)
 
 @app.route('/deletephone', methods = ['POST'])
 def deletephone():
@@ -88,7 +88,7 @@ def deletephone():
 
 @app.errorhandler(404)
 def page_not_found():
-    return Response(render_template('error.html'), 200)
+    return render_template('error.html')
 
 if __name__ == '__main__':
     from waitress import serve
